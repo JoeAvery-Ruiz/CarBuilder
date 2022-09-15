@@ -1,5 +1,6 @@
 require('./connection')
 const Car = require('../models/Car')
+const Part = require('../models/Part')
 
 const Cars = [
     {
@@ -23,12 +24,33 @@ const Cars = [
 ]
 
 
+const Parts=[
+    {
+        part: 'alternator',
+        cost: 50,
+        warranty:'3 years',   
+    }
+]
+
 Car.deleteMany({})
 .then(() => {
     return Car.insertMany(Cars)
 })
 .then((insertedCars) => {
     console.log(insertedCars)
+})
+.catch(err => console.error(err))
+.finally(() => {
+    process.exit()
+})
+
+
+Part.deleteMany({})
+.then(() => {
+    return Part.insertMany(Parts)
+})
+.then((insertedParts) => {
+    console.log(insertedParts)
 })
 .catch(err => console.error(err))
 .finally(() => {
