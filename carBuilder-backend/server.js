@@ -4,6 +4,8 @@ const port = 8000
 const morgan = require('morgan')
 const carRoutes = require('./routes/carRoutes')
 const userRoutes = require('./routes/userRoutes')
+const partRoutes = require('./routes/partRoutes')
+
 const cors = require('cors')
 
 require('./db/connection')
@@ -15,6 +17,7 @@ app.use(express.urlencoded({extended:true}))
 
 
 app.use('/car', carRoutes)
+app.use('/parts', partRoutes)
 app.use('/signup',userRoutes)
 
 app.get('/', (req, res)  => {
